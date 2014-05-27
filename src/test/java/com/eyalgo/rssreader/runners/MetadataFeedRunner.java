@@ -25,13 +25,11 @@ public class MetadataFeedRunner {
 	System.out.println(url);
 	File file = new File(url.toURI());
 	SyndFeed feed = input.build(file);
-	@SuppressWarnings("unchecked")
 	List<SyndEntry> entries = feed.getEntries();
 	for (SyndEntry entry : entries) {
 	    System.out.println(entry.getTitle());
 	    System.out.println(entry.getLink());
 	    System.out.println(entry.getPublishedDate());
-	    @SuppressWarnings("unchecked")
 	    List<SyndContent> contents = entry.getContents();
 	    for (SyndContent content : contents) {
 		System.out.println(content.getValue());
