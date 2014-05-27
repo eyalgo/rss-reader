@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://rss.cnn.com/~d/styles/itemcontent.css"?><rss xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<channel>
+<title>CNN.com - Top Stories</title>
+<link>http://edition.cnn.com/index.html?eref=edition</link>
+<description>CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.</description>
+<language>en-US</language>
+<copyright>Copyright 2014 Cable News Network LP, LLLP.</copyright>
+<pubDate>Tue, 27 May 2014 16:30:57 EDT</pubDate>
+<ttl>10</ttl>
+<image>
+<title>CNN.com - Top Stories</title>
+<link>http://edition.cnn.com/index.html?eref=edition</link>
+<url>http://i.cdn.turner.com/cnn/.e/img/1.0/logo/cnn.logo.rss.gif</url>
+<width>144</width>
+<height>33</height>
+<description>CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.</description>
+</image>
+<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://rss.cnn.com/rss/edition" /><feedburner:info xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" uri="rss/edition" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><item><title>Far-right gains rock Europe</title><guid>http://edition.cnn.com/2014/05/25/world/europe/eu-elections/index.html</guid><link>http://edition.cnn.com/2014/05/25/world/europe/eu-elections/index.html?eref=edition</link><description>France's far-right National Front wins a nationwide election for the first time -- as right wing and Euroskeptic parties record a string of victories across the continent.</description><pubDate>Mon, 26 May 2014 18:10:53 EDT</pubDate></item>
+<item><title>Wives of jailed politicians win votes</title><guid>http://edition.cnn.com/2014/05/26/world/americas/venezuela-elections/index.html</guid><link>http://edition.cnn.com/2014/05/26/world/americas/venezuela-elections/index.html?eref=edition</link><description>The wives of two jailed Venezuelan opposition politicians have won landslide election victories while their husbands remain behind bars.</description><pubDate>Tue, 27 May 2014 00:09:42 EDT</pubDate></item>
+<item><title>Egypt elections: 5 things to know</title><guid>http://edition.cnn.com/2014/05/23/world/africa/egypt-presidential-election-explainer/index.html</guid><link>http://edition.cnn.com/2014/05/23/world/africa/egypt-presidential-election-explainer/index.html?eref=edition</link><description>Egyptians head to the polls to vote for their next president on Monday and Tuesday.</description><pubDate>Tue, 27 May 2014 07:47:13 EDT</pubDate></item>
+<item><title>Why did Pope Francis pray at the wall?</title><guid>http://edition.cnn.com/2014/05/27/opinion/parini-pope-francis-prayer-at-wall/index.html</guid><link>http://edition.cnn.com/2014/05/27/opinion/parini-pope-francis-prayer-at-wall/index.html?eref=edition</link><description>Francis touched the wall, bent his head, and prayed. </description><pubDate>Tue, 27 May 2014 09:54:01 EDT</pubDate></item>
+<item><title>Pope visits Holy Land </title><guid>http://edition.cnn.com/2014/05/24/world/gallery/pope-holy-land/index.html</guid><link>http://edition.cnn.com/2014/05/24/world/gallery/pope-holy-land/index.html?eref=edition</link><description /><pubDate>Tue, 27 May 2014 09:28:14 EDT</pubDate></item>
+</channel>
+</rss>
