@@ -1,4 +1,4 @@
-package org.eyalgo.rssreader.runners;
+package com.eyalgo.rssreader.runners;
 
 import java.io.File;
 import java.net.URL;
@@ -23,6 +23,9 @@ public class MetadataFeedRunner {
 	List<SyndEntry> entries = feed.getEntries();
 	for (SyndEntry entry : entries) {
 	    System.out.println(entry.getTitle());
+	    System.out.println(entry.getLink());
+	    System.out.println(entry.getPublishedDate());
+	    System.out.println();
 	}
     }
 
