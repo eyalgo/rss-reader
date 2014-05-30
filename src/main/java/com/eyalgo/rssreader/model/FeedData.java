@@ -4,27 +4,19 @@ import java.util.List;
 
 public class FeedData {
 
-    private String feedUrl;
-    private List<FeedItem> feedItems;
+    private final String feedUrl;
+    private final List<FeedItem> items;
 
     public FeedData(String feedUrl, List<FeedItem> feedItems) {
 	this.feedUrl = feedUrl;
-	this.feedItems = feedItems;
+	this.items = feedItems;
     }
 
     public String getFeedUrl() {
 	return feedUrl;
     }
 
-    public void setFeedUrl(String feedUrl) {
-	this.feedUrl = feedUrl;
-    }
-
     public List<FeedItem> getItems() {
-	return feedItems;
-    }
-
-    public void setItems(List<FeedItem> feedItems) {
-	this.feedItems = feedItems;
+	return items;
     }
 }
