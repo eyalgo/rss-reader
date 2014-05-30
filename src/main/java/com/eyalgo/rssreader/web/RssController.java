@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.eyalgo.rssreader.model.FeedItem;
@@ -28,10 +27,10 @@ public class RssController {
     }
 
     @RequestMapping(value = "feed", method = RequestMethod.GET)
-    @ResponseBody
-    public void addFeed(@RequestParam("feedUrl") String feedUrl) {
+    public String addFeed(@RequestParam("feedUrl") String feedUrl) {
 	System.out.println("add feed: " + feedUrl);
 	feedReciever.addFeed(feedUrl);
+	return "redirect:all";
     }
 
     @RequestMapping(value = "all", method = RequestMethod.GET)
