@@ -8,9 +8,9 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -21,24 +21,28 @@ import com.eyalgo.rssreader.model.Item;
 public class FeedRecieverTest {
     private static final String FEED_URL = "the url";
     @Mock
-    private ItemsExtractor itemsExtractor;
+    private ItemsExtractor extractor;
     @Mock
     private ItemsRepository repository;
 
-    @InjectMocks
     private FeedReciever reciever;
+
+    @Before
+    public void setup() {
+	reciever = new FeedReciever(extractor, repository);
+    }
 
     @Test
     public void whenGettingUrl_ThenShouldCallItemsExtractor() {
 	reciever.addFeed(FEED_URL);
-	verify(itemsExtractor).extractItems(FEED_URL);
+	verify(extractor).extractItems(FEED_URL);
     }
 
     @SuppressWarnings("unchecked")
     @Test
     public void shouldCallRepositoryWithOutputOfExtractor() {
 	List<Item> items = mock(List.class);
-	when(itemsExtractor.extractItems(FEED_URL)).thenReturn(items);
+	when(extractor.extractItems(FEED_URL)).thenReturn(items);
 	reciever.addFeed(FEED_URL);
 	verify(repository).save(argThat(sameFeedData(FEED_URL, items)));
     }

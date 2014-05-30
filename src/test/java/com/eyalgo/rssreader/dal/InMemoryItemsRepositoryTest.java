@@ -30,7 +30,7 @@ public class InMemoryItemsRepositoryTest {
 
 	repository.save(data);
 
-	List<Item> savedItems = repository.getAll();
+	List<Item> savedItems = repository.findAll();
 
 	assertThat("should get all items from data", savedItems, containsInAnyOrder(item1, item2));
     }
@@ -50,7 +50,7 @@ public class InMemoryItemsRepositoryTest {
 
 	repository.save(data2);
 
-	List<Item> savedItems = repository.getAll();
+	List<Item> savedItems = repository.findAll();
 
 	assertThat("should get all items from both feeds", savedItems, containsInAnyOrder(item1, item2, item3, item4));
     }
@@ -71,7 +71,7 @@ public class InMemoryItemsRepositoryTest {
 
 	repository.save(data2);
 
-	List<Item> savedItems = repository.getAll();
+	List<Item> savedItems = repository.findAll();
 
 	assertThat("should get newer items from same url", savedItems, containsInAnyOrder(item3, item4));
 

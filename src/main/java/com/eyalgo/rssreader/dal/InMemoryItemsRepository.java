@@ -23,7 +23,8 @@ public class InMemoryItemsRepository implements ItemsRepository {
 	db.put(hasKeyForUrl(data.getFeedUrl()), data.getItems());
     }
 
-    public List<Item> getAll() {
+    @Override
+    public List<Item> findAll() {
 	List<Item> result = Lists.newLinkedList();
 	for (List<Item> itemsForUrl : db.values()) {
 	    result.addAll(itemsForUrl);

@@ -14,8 +14,8 @@ import com.eyalgo.rssreader.model.Item;
 @Service
 public class FeedReciever {
     private static final Logger LOGGER = LoggerFactory.getLogger(FeedReciever.class);
-    private ItemsExtractor extractor;
-    private ItemsRepository repository;
+    private final ItemsExtractor extractor;
+    private final ItemsRepository repository;
 
     @Autowired
     public FeedReciever(ItemsExtractor extractor, ItemsRepository repository) {
