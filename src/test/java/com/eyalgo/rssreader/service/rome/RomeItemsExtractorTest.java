@@ -19,7 +19,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.rometools.fetcher.FeedFetcher;
 
 import com.eyalgo.rssreader.model.FeedItem;
-import com.eyalgo.rssreader.service.rome.RomeItemsExtractor;
 import com.google.common.collect.Lists;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -28,7 +27,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 public class RomeItemsExtractorTest {
     @Mock
     private FeedFetcher fetcher;
-    
+
     private RomeItemsExtractor extractor;
 
     @Before
@@ -41,12 +40,14 @@ public class RomeItemsExtractorTest {
     public void shouldReturnConvertedItemsFromFetcher() throws Exception {
 	String feedUrl = "http://url.com";
 	URL expectedUrl = new URL(feedUrl);
-	List<SyndEntry> entries = Lists
-		.newArrayList(entry("t1", "link1", new Date()), entry("t2", "link2", new Date()));
+	Date date1 = mock(Date.class, "date 1");
+	Date date2 = mock(Date.class, "date 2");
+	List<SyndEntry> entries = Lists.newArrayList(entry("t1", "link1", date1), entry("t2", "link2", date2));
 	SyndFeed feed = feed(entries);
 	when(fetcher.retrieveFeed(eq(expectedUrl))).thenReturn(feed);
 	List<FeedItem> extractedItems = extractor.extractItems(feedUrl);
-	assertThat(extractedItems, containsInAnyOrder(sameFeedItem("t1", "link1"), sameFeedItem("t2", "link2")));
+	assertThat(extractedItems,
+		containsInAnyOrder(sameFeedItem("t1", "link1", date1), sameFeedItem("t2", "link2", date2)));
     }
 
     private SyndEntry entry(String title, String link, Date publishDate) {

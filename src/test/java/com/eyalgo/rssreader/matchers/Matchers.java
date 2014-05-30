@@ -1,5 +1,6 @@
 package com.eyalgo.rssreader.matchers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hamcrest.CustomTypeSafeMatcher;
@@ -13,19 +14,21 @@ public class Matchers {
 	return new FeedDataMetcher(expectedFeedUrl, expectedItems);
     }
 
-    public static Matcher<FeedItem> sameFeedItem(String title, String link) {
-	return new FeedItemMetcher(title, link);
+    public static Matcher<FeedItem> sameFeedItem(String title, String link, Date date) {
+	return new FeedItemMetcher(title, link, date);
     }
 
     private final static class FeedItemMetcher extends CustomTypeSafeMatcher<FeedItem> {
 
 	private final String expectedTitle;
 	private final String expectedLink;
+	private final Date expectedDate;
 
-	private FeedItemMetcher(String title, String link) {
+	private FeedItemMetcher(String title, String link, Date date) {
 	    super("a FeedItem Matcher");
 	    this.expectedTitle = title;
 	    this.expectedLink = link;
+	    this.expectedDate = date;
 	}
 
 	@Override
@@ -34,6 +37,9 @@ public class Matchers {
 		return false;
 	    }
 	    if (!feedItem.getLink().equals(expectedLink)) {
+		return false;
+	    }
+	    if (!feedItem.getPublishedDate().equals(expectedDate)) {
 		return false;
 	    }
 	    return true;
