@@ -1,4 +1,4 @@
-package com.eyalgo.rssreader.service;
+package com.eyalgo.rssreader.service.rome;
 
 import java.io.IOException;
 import java.net.URL;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eyalgo.rssreader.model.FeedItem;
+import com.eyalgo.rssreader.service.ItemsExtractor;
 import com.google.common.collect.Lists;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;

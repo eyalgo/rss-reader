@@ -1,4 +1,4 @@
-package com.eyalgo.rssreader.service;
+package com.eyalgo.rssreader.service.rome;
 
 import static com.eyalgo.rssreader.matchers.Matchers.sameFeedItem;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -19,6 +19,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.rometools.fetcher.FeedFetcher;
 
 import com.eyalgo.rssreader.model.FeedItem;
+import com.eyalgo.rssreader.service.rome.RomeItemsExtractor;
 import com.google.common.collect.Lists;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
