@@ -1,5 +1,7 @@
 package com.eyalgo.rssreader.service;
 
+import static com.eyalgo.rssreader.matchers.Matchers.sameFeedData;
+import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -17,27 +19,27 @@ import com.eyalgo.rssreader.model.Item;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FeedRecieverTest {
-	private final String FEED_URL = "the url";
-	@Mock
-	private ItemsExtractor itemsExtractor;
-	@Mock
-	private ItemsRepository repository;
-	
-	@InjectMocks
-	private FeedReciever reciever;
-	
-	@Test
-	public void whenGettingUrl_ThenShouldCallItemsExtractor() {
-		reciever.addFeed(FEED_URL);
-		verify(itemsExtractor).extractItems(FEED_URL);
-	}
-	
-	@SuppressWarnings("unchecked")
+    private static final String FEED_URL = "the url";
+    @Mock
+    private ItemsExtractor itemsExtractor;
+    @Mock
+    private ItemsRepository repository;
+
+    @InjectMocks
+    private FeedReciever reciever;
+
     @Test
-	public void shouldCallRepositoryWithOutputOfExtractor() {
-		List<Item> items = mock(List.class);
-		when(itemsExtractor.extractItems(FEED_URL)).thenReturn(items);
-		reciever.addFeed(FEED_URL);
-		verify(repository).saveItems(items);
-	}
+    public void whenGettingUrl_ThenShouldCallItemsExtractor() {
+	reciever.addFeed(FEED_URL);
+	verify(itemsExtractor).extractItems(FEED_URL);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Test
+    public void shouldCallRepositoryWithOutputOfExtractor() {
+	List<Item> items = mock(List.class);
+	when(itemsExtractor.extractItems(FEED_URL)).thenReturn(items);
+	reciever.addFeed(FEED_URL);
+	verify(repository).save(argThat(sameFeedData(FEED_URL, items)));
+    }
 }

@@ -18,9 +18,7 @@ public class InMemoryItemsRepository implements ItemsRepository {
 	db = Maps.newHashMap();
     }
 
-    public void saveItems(List<Item> items) {
-    }
-
+    @Override
     public void save(FeedData data) {
 	db.put(hasKeyForUrl(data.getFeedUrl()), data.getItems());
     }

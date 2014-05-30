@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eyalgo.rssreader.dal.ItemsRepository;
+import com.eyalgo.rssreader.model.FeedData;
 import com.eyalgo.rssreader.model.Item;
 
 @Service
@@ -25,6 +26,6 @@ public class FeedReciever {
     public void addFeed(String feedUrl) {
 	LOGGER.info(String.format("going to add feed: %s", feedUrl));
 	List<Item> items = extractor.extractItems(feedUrl);
-	repository.saveItems(items);
+	repository.save(new FeedData(feedUrl, items));
     }
 }

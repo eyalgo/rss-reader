@@ -1,11 +1,7 @@
 package com.eyalgo.rssreader.dal;
 
-import java.util.List;
-
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedData;
 
 public interface ItemsRepository {
-
-	void saveItems(List<Item> items);
-
+    void save(FeedData data);
 }
