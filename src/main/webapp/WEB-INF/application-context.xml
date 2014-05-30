@@ -11,4 +11,5 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 	</bean>
+	<bean id="fetcher" class="org.rometools.fetcher.impl.HttpURLFeedFetcher" />
 </beans>

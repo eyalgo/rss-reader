@@ -142,6 +142,11 @@
 			<version>${rome.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome-fetcher</artifactId>
+			<version>${rome.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>

@@ -13,11 +13,39 @@ public class Matchers {
 	return new FeedDataMetcher(expectedFeedUrl, expectedItems);
     }
 
+    public static Matcher<Item> sameFeedItem(String title, String link) {
+	return new FeedItemMetcher(title, link);
+    }
+
+    private final static class FeedItemMetcher extends CustomTypeSafeMatcher<Item> {
+
+	private final String expectedTitle;
+	private final String expectedLink;
+
+	private FeedItemMetcher(String title, String link) {
+	    super("a FeedItem Matcher");
+	    this.expectedTitle = title;
+	    this.expectedLink = link;
+	}
+
+	@Override
+	protected boolean matchesSafely(Item feedItem) {
+	    if (!feedItem.getTitle().equals(expectedTitle)) {
+		return false;
+	    }
+	    if (!feedItem.getLink().equals(expectedLink)) {
+		return false;
+	    }
+	    return true;
+	}
+
+    }
+
     private final static class FeedDataMetcher extends CustomTypeSafeMatcher<FeedData> {
 	private final String expectedFeedUrl;
 	private final List<Item> expectedItems;
 
-	public FeedDataMetcher(String expectedFeedUrl, List<Item> expectedItems) {
+	private FeedDataMetcher(String expectedFeedUrl, List<Item> expectedItems) {
 	    super("a FeedData Matcher");
 	    this.expectedFeedUrl = expectedFeedUrl;
 	    this.expectedItems = expectedItems;

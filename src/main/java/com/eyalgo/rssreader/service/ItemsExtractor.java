@@ -6,6 +6,6 @@ import com.eyalgo.rssreader.model.Item;
 
 public interface ItemsExtractor {
 
-	List<Item>  extractItems(String feedUrl);
+    List<Item> extractItems(String feedUrl);
 
 }
