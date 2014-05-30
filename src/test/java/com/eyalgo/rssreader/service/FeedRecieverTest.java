@@ -15,7 +15,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.eyalgo.rssreader.dal.ItemsRepository;
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FeedRecieverTest {
@@ -41,7 +41,7 @@ public class FeedRecieverTest {
     @SuppressWarnings("unchecked")
     @Test
     public void shouldCallRepositoryWithOutputOfExtractor() {
-	List<Item> items = mock(List.class);
+	List<FeedItem> items = mock(List.class);
 	when(extractor.extractItems(FEED_URL)).thenReturn(items);
 	reciever.addFeed(FEED_URL);
 	verify(repository).save(argThat(sameFeedData(FEED_URL, items)));

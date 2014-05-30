@@ -18,7 +18,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.rometools.fetcher.FeedFetcher;
 
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 import com.google.common.collect.Lists;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -44,7 +44,7 @@ public class RomeItemsExtractorTest {
 		.newArrayList(entry("t1", "link1", new Date()), entry("t2", "link2", new Date()));
 	SyndFeed feed = feed(entries);
 	when(fetcher.retrieveFeed(eq(expectedUrl))).thenReturn(feed);
-	List<Item> extractedItems = extractor.extractItems(feedUrl);
+	List<FeedItem> extractedItems = extractor.extractItems(feedUrl);
 	assertThat(extractedItems, containsInAnyOrder(sameFeedItem("t1", "link1"), sameFeedItem("t2", "link2")));
     }
 

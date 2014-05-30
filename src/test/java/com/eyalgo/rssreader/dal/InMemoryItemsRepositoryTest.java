@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.eyalgo.rssreader.model.FeedData;
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 import com.google.common.collect.Lists;
 
 public class InMemoryItemsRepositoryTest {
@@ -24,13 +24,13 @@ public class InMemoryItemsRepositoryTest {
     @Test
     public void whenAddingFeedData_shouldGetBackAllItems() {
 	String feedUrl = "url";
-	Item item1 = mock(Item.class, "item 1");
-	Item item2 = mock(Item.class, "item 2");
+	FeedItem item1 = mock(FeedItem.class, "item 1");
+	FeedItem item2 = mock(FeedItem.class, "item 2");
 	FeedData data = new FeedData(feedUrl, Lists.newArrayList(item1, item2));
 
 	repository.save(data);
 
-	List<Item> savedItems = repository.findAll();
+	List<FeedItem> savedItems = repository.findAll();
 
 	assertThat("should get all items from data", savedItems, containsInAnyOrder(item1, item2));
     }
@@ -38,19 +38,19 @@ public class InMemoryItemsRepositoryTest {
     @Test
     public void whenAddingFeedDataFromDifferentUrls_shouldHaveItemsFromBothFeeds() {
 	String feedUrl1 = "url";
-	Item item1 = mock(Item.class, "item 1");
-	Item item2 = mock(Item.class, "item 2");
+	FeedItem item1 = mock(FeedItem.class, "item 1");
+	FeedItem item2 = mock(FeedItem.class, "item 2");
 	FeedData data1 = new FeedData(feedUrl1, Lists.newArrayList(item1, item2));
 	repository.save(data1);
 
 	String feedUrl2 = "url2";
-	Item item3 = mock(Item.class, "item 3");
-	Item item4 = mock(Item.class, "item 4");
+	FeedItem item3 = mock(FeedItem.class, "item 3");
+	FeedItem item4 = mock(FeedItem.class, "item 4");
 	FeedData data2 = new FeedData(feedUrl2, Lists.newArrayList(item3, item4));
 
 	repository.save(data2);
 
-	List<Item> savedItems = repository.findAll();
+	List<FeedItem> savedItems = repository.findAll();
 
 	assertThat("should get all items from both feeds", savedItems, containsInAnyOrder(item1, item2, item3, item4));
     }
@@ -58,20 +58,20 @@ public class InMemoryItemsRepositoryTest {
     @Test
     public void whenSavingSameUrlWithDifferentItems_shouldOverrideOldItems() {
 	String feedUrl = "url";
-	Item item1 = mock(Item.class, "item 1");
-	Item item2 = mock(Item.class, "item 2");
-	List<Item> items = Lists.newArrayList(item1, item2);
+	FeedItem item1 = mock(FeedItem.class, "item 1");
+	FeedItem item2 = mock(FeedItem.class, "item 2");
+	List<FeedItem> items = Lists.newArrayList(item1, item2);
 	FeedData data = new FeedData(feedUrl, items);
 
 	repository.save(data);
 
-	Item item3 = mock(Item.class, "item 3");
-	Item item4 = mock(Item.class, "item 4");
+	FeedItem item3 = mock(FeedItem.class, "item 3");
+	FeedItem item4 = mock(FeedItem.class, "item 4");
 	FeedData data2 = new FeedData(feedUrl, Lists.newArrayList(item3, item4));
 
 	repository.save(data2);
 
-	List<Item> savedItems = repository.findAll();
+	List<FeedItem> savedItems = repository.findAll();
 
 	assertThat("should get newer items from same url", savedItems, containsInAnyOrder(item3, item4));
 

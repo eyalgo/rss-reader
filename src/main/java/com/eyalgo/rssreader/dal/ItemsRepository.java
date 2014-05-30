@@ -3,10 +3,10 @@ package com.eyalgo.rssreader.dal;
 import java.util.List;
 
 import com.eyalgo.rssreader.model.FeedData;
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 
 public interface ItemsRepository {
     void save(FeedData data);
 
-    List<Item> findAll();
+    List<FeedItem> findAll();
 }

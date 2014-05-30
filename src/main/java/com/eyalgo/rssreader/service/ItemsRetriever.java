@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eyalgo.rssreader.dal.ItemsRepository;
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 
 @Service
 public class ItemsRetriever {
@@ -18,7 +18,7 @@ public class ItemsRetriever {
 	this.repository = repository;
     }
 
-    public List<Item> get() {
+    public List<FeedItem> get() {
 	return repository.findAll();
     }
 

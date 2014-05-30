@@ -2,10 +2,10 @@ package com.eyalgo.rssreader.service;
 
 import java.util.List;
 
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 
 public interface ItemsExtractor {
 
-    List<Item> extractItems(String feedUrl);
+    List<FeedItem> extractItems(String feedUrl);
 
 }

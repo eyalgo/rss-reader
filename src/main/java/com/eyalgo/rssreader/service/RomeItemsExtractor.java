@@ -9,7 +9,7 @@ import org.rometools.fetcher.FetcherException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 import com.google.common.collect.Lists;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -26,14 +26,14 @@ public class RomeItemsExtractor implements ItemsExtractor {
     }
 
     @Override
-    public List<Item> extractItems(String feedUrl) {
+    public List<FeedItem> extractItems(String feedUrl) {
 	try {
-	    List<Item> result = Lists.newLinkedList();
+	    List<FeedItem> result = Lists.newLinkedList();
 	    URL url = new URL(feedUrl);
 	    SyndFeed feed = fetcher.retrieveFeed(url);
 	    List<SyndEntry> entries = feed.getEntries();
 	    for (SyndEntry entry : entries) {
-		result.add(new Item(entry.getTitle(), entry.getLink(), entry.getPublishedDate()));
+		result.add(new FeedItem(entry.getTitle(), entry.getLink(), entry.getPublishedDate()));
 	    }
 	    return result;
 	} catch (IllegalArgumentException | IOException | FeedException | FetcherException e) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 import com.eyalgo.rssreader.service.FeedReciever;
 import com.eyalgo.rssreader.service.ItemsRetriever;
 
@@ -36,7 +36,7 @@ public class RssController {
 
     @RequestMapping(value = "all", method = RequestMethod.GET)
     public ModelAndView showAll() {
-	List<Item> items = itemsRetriever.get();
+	List<FeedItem> items = itemsRetriever.get();
 	ModelAndView modelAndView = new ModelAndView("rssItems");
 	modelAndView.addObject("items", items);
 	return modelAndView;

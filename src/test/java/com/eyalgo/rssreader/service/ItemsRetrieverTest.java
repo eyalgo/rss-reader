@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.eyalgo.rssreader.dal.ItemsRepository;
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ItemsRetrieverTest {
@@ -31,10 +31,10 @@ public class ItemsRetrieverTest {
     @SuppressWarnings("unchecked")
     @Test
     public void whenCallingForItems_shouldReturnItemsFromRepository() throws Exception {
-	List<Item> savedItems = mock(List.class, "saves items");
+	List<FeedItem> savedItems = mock(List.class, "saves items");
 	when(repository.findAll()).thenReturn(savedItems);
 
-	List<Item> itemsRetrieved = items.get();
+	List<FeedItem> itemsRetrieved = items.get();
 	assertThat(itemsRetrieved, is(savedItems));
     }
 }

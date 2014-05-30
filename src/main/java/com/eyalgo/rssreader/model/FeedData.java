@@ -5,11 +5,11 @@ import java.util.List;
 public class FeedData {
 
     private String feedUrl;
-    private List<Item> items;
+    private List<FeedItem> feedItems;
 
-    public FeedData(String feedUrl, List<Item> items) {
+    public FeedData(String feedUrl, List<FeedItem> feedItems) {
 	this.feedUrl = feedUrl;
-	this.items = items;
+	this.feedItems = feedItems;
     }
 
     public String getFeedUrl() {
@@ -20,11 +20,11 @@ public class FeedData {
 	this.feedUrl = feedUrl;
     }
 
-    public List<Item> getItems() {
-	return items;
+    public List<FeedItem> getItems() {
+	return feedItems;
     }
 
-    public void setItems(List<Item> items) {
-	this.items = items;
+    public void setItems(List<FeedItem> feedItems) {
+	this.feedItems = feedItems;
     }
 }

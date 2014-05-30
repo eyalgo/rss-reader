@@ -10,7 +10,7 @@ import java.util.Date;
 import org.junit.Test;
 
 import com.sun.syndication.feed.synd.SyndEntry;
-public class ItemTest {
+public class FeedItemTest {
     @Test
     public void shouldSetFieldsOfSyndEntry() {
 	String title = "this is the title";
@@ -22,7 +22,7 @@ public class ItemTest {
 	when(feedEntry.getTitle()).thenReturn(title);
 	when(feedEntry.getLink()).thenReturn(link);
 	
-	Item item = Item.fromSyndEntry(feedEntry);
+	FeedItem item = FeedItem.fromSyndEntry(feedEntry);
 	assertNotNull(item);
 	
 	assertThat(item.getTitle(), equalTo(title));

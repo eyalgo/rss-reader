@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.eyalgo.rssreader.dal.ItemsRepository;
 import com.eyalgo.rssreader.model.FeedData;
-import com.eyalgo.rssreader.model.Item;
+import com.eyalgo.rssreader.model.FeedItem;
 
 @Service
 public class FeedReciever {
@@ -25,7 +25,7 @@ public class FeedReciever {
 
     public void addFeed(String feedUrl) {
 	LOGGER.info(String.format("going to add feed: %s", feedUrl));
-	List<Item> items = extractor.extractItems(feedUrl);
+	List<FeedItem> items = extractor.extractItems(feedUrl);
 	repository.save(new FeedData(feedUrl, items));
     }
 }
