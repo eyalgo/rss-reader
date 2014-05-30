@@ -12,19 +12,19 @@ import com.eyalgo.rssreader.model.Item;
 
 @Service
 public class FeedReciever {
-	private static final Logger LOGGER = LoggerFactory.getLogger(FeedReciever.class);
-	private ItemsExtractor extractor;
-	private ItemsRepository repository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(FeedReciever.class);
+    private ItemsExtractor extractor;
+    private ItemsRepository repository;
 
-	@Autowired
-	public FeedReciever(ItemsExtractor extractor, ItemsRepository repository) {
-		this.extractor = extractor;
-		this.repository = repository;
-	}
+    @Autowired
+    public FeedReciever(ItemsExtractor extractor, ItemsRepository repository) {
+	this.extractor = extractor;
+	this.repository = repository;
+    }
 
-	public void addFeed(String feedUrl) {
-		LOGGER.info(String.format("going to add feed: %s", feedUrl));
-		List<Item> items = extractor.extractItems(feedUrl);
-		repository.saveItems(items);
-	}
+    public void addFeed(String feedUrl) {
+	LOGGER.info(String.format("going to add feed: %s", feedUrl));
+	List<Item> items = extractor.extractItems(feedUrl);
+	repository.saveItems(items);
+    }
 }
