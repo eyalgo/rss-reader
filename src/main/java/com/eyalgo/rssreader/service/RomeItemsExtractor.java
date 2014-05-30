@@ -10,11 +10,16 @@ import com.google.common.collect.Lists;
 @Service
 public class RomeItemsExtractor implements ItemsExtractor {
 
-	public RomeItemsExtractor() {
-	}
+    public RomeItemsExtractor() {
+    }
 
-	public List<Item> extractItems(String feedUrl) {
-		return Lists.newLinkedList();
-	}
+    @Override
+    public List<Item> extractItems(String feedUrl) {
+	List<Item> result = Lists.newLinkedList();
+	result.add(new Item("item 1 of " +feedUrl, feedUrl, null));
+	result.add(new Item("item 2 of " +feedUrl, feedUrl, null));
+	result.add(new Item("item 3 of " +feedUrl, feedUrl, null));
+	return result;
+    }
 
 }

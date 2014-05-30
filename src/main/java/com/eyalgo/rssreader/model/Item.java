@@ -10,7 +10,7 @@ public class Item {
     private final String link;
     private final Date publishedDate;
 
-    private Item(String title, String link, Date publishedDate) {
+    public Item(String title, String link, Date publishedDate) {
 	this.title = title;
 	this.link = link;
 	this.publishedDate = publishedDate;
