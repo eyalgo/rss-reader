@@ -15,10 +15,8 @@ public class ServerMain {
 	SLF4JBridgeHandler.install();
 
 	try {
-	    JettyServer server = new JettyServer(8080);
-	    server.start();
-	    LOGGER.info("Server started");
-	    server.join();
+	    new JettyServer().start(8080);
+	    LOGGER.info("Server started >>>");
 	} catch (Exception e) {
 	    LOGGER.error("Failed to start server.", e);
 	}

@@ -3,29 +3,21 @@
 package com.eyalgo.rssreader.server;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 class JettyServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(JettyServer.class);
+    private static final String WEB_APP_ROOT = "src/main/webapp";
 
-    public static final String WEB_APP_ROOT = "src/main/webapp";
-    public static final String MVC_SERVLET_NAME = "mvcDispatcher";
-    public static final String JSP_SERVLET_NAME = "jspServlet";
-
-    private final int port;
-
-    private Server server;
-
-    JettyServer(int port) {
-	this.port = port;
+    JettyServer() {
     }
 
-    void start() {
-	server = new Server(port);
-	server.setHandler(getServletHandler());
+    void start(int port) {
+	WebAppContext webAppContext = createContext();
+	Server server = new Server(port);
+	server.setHandler(webAppContext);
 
 	try {
 	    server.start();
@@ -34,26 +26,13 @@ class JettyServer {
 	    throw new RuntimeException();
 	}
 
-	LOGGER.info("Server started");
+	LOGGER.info("Server started...");
     }
 
-    private ServletContextHandler getServletHandler() {
-//	ServletHolder mvcServletHolder = new ServletHolder(MVC_SERVLET_NAME, new DispatcherServlet());
-//	mvcServletHolder.setInitParameter("contextConfigLocation", "web-context.xml");
-//
-//	ServletHolder jspServletHolder = new ServletHolder(JSP_SERVLET_NAME, new org.apache.jasper.servlet.JspServlet());
-//	jspServletHolder.setInitParameter("keepgenerated", "true");
-//	jspServletHolder.setInitParameter("scratchDir", "views/generated");
-
-	WebAppContext bb = new WebAppContext();
-	bb.setServer(server);
-	bb.setContextPath("/");
-	bb.setWar(WEB_APP_ROOT);
-
-	return bb;
-    }
-
-    void join() throws InterruptedException {
-	server.join();
+    private WebAppContext createContext() {
+	WebAppContext webAppContext = new WebAppContext();
+	webAppContext.setContextPath("/");
+	webAppContext.setWar(WEB_APP_ROOT);
+	return webAppContext;
     }
 }
