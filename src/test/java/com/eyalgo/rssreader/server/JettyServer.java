@@ -4,11 +4,9 @@ package com.eyalgo.rssreader.server;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.servlet.DispatcherServlet;
 
 class JettyServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(JettyServer.class);
@@ -40,12 +38,12 @@ class JettyServer {
     }
 
     private ServletContextHandler getServletHandler() {
-	ServletHolder mvcServletHolder = new ServletHolder(MVC_SERVLET_NAME, new DispatcherServlet());
-	mvcServletHolder.setInitParameter("contextConfigLocation", "web-context.xml");
-
-	ServletHolder jspServletHolder = new ServletHolder(JSP_SERVLET_NAME, new org.apache.jasper.servlet.JspServlet());
-	jspServletHolder.setInitParameter("keepgenerated", "true");
-	jspServletHolder.setInitParameter("scratchDir", "views/generated");
+//	ServletHolder mvcServletHolder = new ServletHolder(MVC_SERVLET_NAME, new DispatcherServlet());
+//	mvcServletHolder.setInitParameter("contextConfigLocation", "web-context.xml");
+//
+//	ServletHolder jspServletHolder = new ServletHolder(JSP_SERVLET_NAME, new org.apache.jasper.servlet.JspServlet());
+//	jspServletHolder.setInitParameter("keepgenerated", "true");
+//	jspServletHolder.setInitParameter("scratchDir", "views/generated");
 
 	WebAppContext bb = new WebAppContext();
 	bb.setServer(server);
